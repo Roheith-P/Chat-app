@@ -8,6 +8,7 @@ Public Class Form1
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Dim result As String
         Dim speak = CreateObject("sapi.spvoice")
+        result = ""
         If RichTextBox1.Text = "hi" Then
             result = "Hello
 "
@@ -20,8 +21,15 @@ Public Class Form1
         ElseIf RichTextBox1.Text = "name" Then
             result = "My name is vcon
 "
+        ElseIf RichTextBox1.Text = "add" Then
+            Form2.Visible = True
+
+        End If
+        If RichTextBox1.Text = "" Then
+            result = ""
         End If
         TextBox1.AppendText(result)
+
         If CheckBox1.Checked = True Then
             speak.speak(result)
         End If
@@ -29,6 +37,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MaximizeBox = False
+        MinimizeBox = False
         Dim notify As New PopupNotifier
         notify.BodyColor = Color.Red
         notify.ContentColor = Color.White
