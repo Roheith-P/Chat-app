@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports Tulpep.NotificationWindow
+Public Class Form1
+
     Private Sub Button1_Click(sender As Object, e As EventArgs)
 
     End Sub
@@ -23,5 +25,15 @@
         If CheckBox1.Checked = True Then
             speak.speak(result)
         End If
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MaximizeBox = False
+        Dim notify As New PopupNotifier
+        notify.BodyColor = Color.Red
+        notify.ContentColor = Color.White
+        notify.TitleText = "information"
+        notify.ContentText = "Check the voice to Add voice"
+        notify.Popup()
     End Sub
 End Class
